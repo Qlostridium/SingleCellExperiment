@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 nextflow.preview.dsl=2
-scriptDir = ( params.global.standAlone == null || params.global.standAlone != true) ? "${params.global.rundir}/src/SingleCellExperiment/processes" : "${params.global.rundir}/processes"
+scriptDir = "${workflow.projectDir}/src/SingleCellExperiment/bin"
 
 
 process SINGLE_CELL_EXPERIMENT__BC_RANK_METRICS {
@@ -12,7 +12,7 @@ process SINGLE_CELL_EXPERIMENT__BC_RANK_METRICS {
   tuple val(samplename), file("${samplename}.SINGLE_CELL_EXPERIMENT__BC_RANK_METRICS.rds")
   script:
   """
-  Rscript ${scriptDir}/bcRankMetrics/bcRankMetrics.R --rdsFile ${rdsfile} \
+  Rscript ${scriptDir}/bcRankMetrics.R --rdsFile ${rdsfile} \
 		--output "${samplename}.SINGLE_CELL_EXPERIMENT__BC_RANK_METRICS.rds"
   """
 }

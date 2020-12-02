@@ -1,4 +1,4 @@
-FROM qrouchon/r-base-plus
+FROM qrouchon/r-base-plus:4.0.2
 LABEL maintainer="QuR <quentin.rouchon@irc.vib-ugent.be>"
 
 RUN apt-get update -qq \
